@@ -31,5 +31,29 @@ button {
     border: none;
     color: white;
     text-align: center;
+}
 
+hr{
+    border: 2px solid #77797A;
+}
+
+section{
+    border: 1px solid grey;
+    width: 100%;
+    height: 250px;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.cardPosition{
+    display: flex;
+    justify-content: center;
+}
+
+.cardSizing {
+    margin: 5px;
+    width: 200px;
+    padding: 0;
+    background-color: #355366;
+    color: white;
 }
