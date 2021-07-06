@@ -45,6 +45,9 @@ section{
     padding: 5px;
 }
 
+p{
+    font-size: 20px;
+}
 .cardPosition{
     display: flex;
     justify-content: center;
