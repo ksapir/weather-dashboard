@@ -15,20 +15,26 @@ var dateDisplayArray = [
 // Variable for current date
 var dateToday = moment().format('M/D/YYYY');
 
+// Variables for future 5 days
 var momentEl1 = moment().add(1,'day').format('M/D/YYYY');
 var momentEl2 = moment().add(2,'day').format('M/D/YYYY');
 var momentEl3 = moment().add(3,'day').format('M/D/YYYY');
 var momentEl4 = moment().add(4,'day').format('M/D/YYYY');
 var momentEl5 = moment().add(5,'day').format('M/D/YYYY');
 
+// variables for local storage
+var lastCityEl = $('#lastCity');
+var firstSaved = localStorage.getItem("last city")
 
-var momentsArray = {
-    momentEl1,
-    momentEl2,
-    momentEl3,
-    momentEl4,
-    momentEl5,
-}
+var secondToLastCityEl = $('#secondToLastCity');
+var secondSaved = localStorage.getItem("second to last city")
+
+var thirdToLastCityEl = $('#thirdToLastCity');
+var thirdSaved = localStorage.getItem("third to last city")
+
+var fourthToLastCityEl = $('#fourthToLastCity');
+var fourthSaved = localStorage.getItem("fourth to last city")
+
 
 // Hides weather information section on page load
 weatherInfoEl.hide();
@@ -112,8 +118,43 @@ function handleFormSubmit(event) {
   $('#wind5').text('Wind: ' + data.list[34].wind.speed + ' MPH')
   $('#humidity5').text('Humidity: ' + data.list[34].main.humidity + '%')
     })
+
+localStorage.setItem("last city", cityInputEl.val())
+var firstSaved = localStorage.getItem("last city")
+lastCityEl.text(firstSaved)
+console.log(firstSaved)
+
+var previousCityBtnEl = $('#lastCity')
+if (previousCityBtnEl){
+    $('#weatherInfo').reload()
+    console.log(firstSaved)
 }
 
+// if (cityFormInput.click() = true)
+// localStorage.setItem("second to last city", cityInputEl.val())
+// var secondSaved = localStorage.getItem("second to last city")
+// lastCityEl.text(secondSaved)
+// console.log(secondSaved)
+
+// if (cityFormInput.click() = true)
+// localStorage.setItem("third to last city", cityInputEl.val())
+// var thirdSaved = localStorage.getItem("third to last city")
+// lastCityEl.text(thirdSaved)
+// console.log(thirdSaved)
+
+// if (cityFormInput.click() = true)
+// localStorage.setItem("fourth to last city", cityInputEl.val())
+// var fourthSaved = localStorage.getItem("fourth to last city")
+// lastCityEl.text(fourthSaved)
+// console.log(fourthSaved)
+
+
+}
+
+lastCityEl.text(firstSaved)
+// secondToLastCityEl.text(secondSaved)
+// thirdToLastCityEl.text(thirdSaved)
+// fourthToLastCityEl.text(fourthSaved)
 
 // Clears form of city input
 cityInputEl.val("");
