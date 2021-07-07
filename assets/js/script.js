@@ -21,7 +21,6 @@ var momentEl3 = moment().add(3,'day').format('M/D/YYYY');
 var momentEl4 = moment().add(4,'day').format('M/D/YYYY');
 var momentEl5 = moment().add(5,'day').format('M/D/YYYY');
 
-console.log(momentEl5)
 
 var momentsArray = {
     momentEl1,
@@ -88,23 +87,27 @@ function handleFormSubmit(event) {
     .then(function (data){
 
 // Appending appropriate date, time, wind and humidity for next 5 days
-
+  $('#date1').text(momentEl1)
   $('#temp1').text('Temp: ' + data.list[2].main.temp + ' degrees')
   $('#wind1').text('Wind: ' + data.list[2].wind.speed + ' MPH')
   $('#humidity1').text('Humidity: ' + data.list[2].main.humidity + '%')
 
+  $('#date2').text(momentEl2)
   $('#temp2').text('Temp: ' + data.list[10].main.temp + ' degrees')
   $('#wind2').text('Wind: ' + data.list[10].wind.speed + ' MPH')
   $('#humidity2').text('Humidity: ' + data.list[10].main.humidity + '%')
 
+  $('#date3').text(momentEl3)
   $('#temp3').text('Temp: ' + data.list[18].main.temp + ' degrees')
   $('#wind3').text('Wind: ' + data.list[18].wind.speed + ' MPH')
   $('#humidity3').text('Humidity: ' + data.list[18].main.humidity + '%')
 
+  $('#date4').text(momentEl4)
   $('#temp4').text('Temp: ' + data.list[26].main.temp + ' degrees')
   $('#wind4').text('Wind: ' + data.list[26].wind.speed + ' MPH')
   $('#humidity4').text('Humidity: ' + data.list[26].main.humidity + '%')
 
+  $('#date5').text(momentEl5)
   $('#temp5').text('Temp: ' + data.list[34].main.temp + ' degrees')
   $('#wind5').text('Wind: ' + data.list[34].wind.speed + ' MPH')
   $('#humidity5').text('Humidity: ' + data.list[34].main.humidity + '%')
