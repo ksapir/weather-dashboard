@@ -126,9 +126,10 @@ console.log(firstSaved)
 
 var previousCityBtnEl = $('#lastCity')
 if (previousCityBtnEl){
-    $('#weatherInfo').reload()
-    console.log(firstSaved)
+
 }
+}
+
 
 // if (cityFormInput.click() = true)
 // localStorage.setItem("second to last city", cityInputEl.val())
@@ -149,7 +150,7 @@ if (previousCityBtnEl){
 // console.log(fourthSaved)
 
 
-}
+
 
 lastCityEl.text(firstSaved)
 // secondToLastCityEl.text(secondSaved)
