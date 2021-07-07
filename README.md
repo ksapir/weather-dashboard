@@ -8,3 +8,5 @@ This project was executed to test my knowledge in using third party APIs as well
 Below is a screenshot of my dashboard
 ![Weather Dahboard Screenshot](./assets/weather-dashboard.png)
 
+My deployed application:
+[Weather Dashboard](https://ksapir.github.io/weather-dashboard/)
