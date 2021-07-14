@@ -8,3 +8,8 @@ Below is a screenshot of my dashboard
 
 My deployed application:
 [Weather Dashboard](https://ksapir.github.io/weather-dashboard/)
+
+Technologies used:
+ - Bootstrap
+ - Jquery
+ - MomentJS
