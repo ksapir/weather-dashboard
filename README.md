@@ -16,4 +16,4 @@ Technologies used:
 
 Contributors:
 - Karen Pion
-   -karenlpion@gmail.com 
+   - karenlpion@gmail.com 
