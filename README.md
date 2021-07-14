@@ -13,3 +13,6 @@ Technologies used:
  - Bootstrap
  - Jquery
  - MomentJS
+
+Contributors:
+- Karen Pion
