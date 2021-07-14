@@ -1,4 +1,4 @@
-# Weather-Dashboard
+# Weather Dashboard
 
 The weather dashboard was created in order to supply users with accurate weather data when searching by city.
 It would display the weather for that day and as well as for the next 5 days.
@@ -16,3 +16,4 @@ Technologies used:
 
 Contributors:
 - Karen Pion
+   -karenlpion@gmail.com 
