@@ -81,6 +81,8 @@ function handleFormSubmit(event) {
 
         // var uvIndexToday = $('<p>');
         // uvIndexToday.text("UV Index: " + )
+        cityFormInput.val()
+        forecastTodayEl.val()
     });
 
     // URL used to grab 5 day forecast
