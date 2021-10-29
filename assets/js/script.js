@@ -27,26 +27,13 @@ var momentEl5 = moment().add(5, 'day').format('M/D/YYYY');
 
 // variables for local storage
 let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
-// var lastCityEl = $('#lastCity');
-// var firstSaved = localStorage.getItem("last city")
 
-// var secondToLastCityEl = $('#secondToLastCity');
-// var secondSaved = localStorage.getItem("second to last city")
-
-// var thirdToLastCityEl = $('#thirdToLastCity');
-// var thirdSaved = localStorage.getItem("third to last city")
-
-// var fourthToLastCityEl = $('#fourthToLastCity');
-// var fourthSaved = localStorage.getItem("fourth to last city")
-
-
-// Hides weather information section on page load
 weatherInfoEl.hide();
 
 // Event handler listening for submitting the form
 cityFormInput.on('submit', handleFormSubmit);
 
-function handleFormSubmit(event) {
+function handleFormSubmit (event) {
     // Prevents refreshing of page
     event.preventDefault();
     console.log('City:', cityInputEl.val());
@@ -154,12 +141,13 @@ searchEl.on("click", function () {
 
 
 function renderSearchHistory() {
+    historyEl.empty();
     historyEl.innerHTML = "";
     for (let i = 0; i < searchHistory.length; i++) {
         const historyItem = $("<button></button>");
         historyItem.append(searchHistory[i]);
         historyItem.on("click", function () {
-            handleFormSubmit(historyItem.value);
+            handleFormSubmit(historyItem);
         })
         historyEl.append(historyItem);
     }
@@ -174,47 +162,9 @@ clearEl.on("click", function () {
 
 renderSearchHistory();
 if (searchHistory.length > 0) {
+    console.log(searchHistory)
     handleFormSubmit(searchHistory[searchHistory.length - 1]);
 }
 
-// localStorage.setItem("last city", cityInputEl.val())
-// var firstSaved = localStorage.getItem("last city")
-// lastCityEl.text(firstSaved)
-// console.log(firstSaved)
-
-// var previousCityBtnEl = $('#lastCity')
-// if (previousCityBtnEl){
-
-// }
-// }
-
-
-// if (cityFormInput.click() = true)
-// localStorage.setItem("second to last city", cityInputEl.val())
-// var secondSaved = localStorage.getItem("second to last city")
-// lastCityEl.text(secondSaved)
-// console.log(secondSaved)
-
-// if (cityFormInput.click() = true)
-// localStorage.setItem("third to last city", cityInputEl.val())
-// var thirdSaved = localStorage.getItem("third to last city")
-// lastCityEl.text(thirdSaved)
-// console.log(thirdSaved)
-
-// if (cityFormInput.click() = true)
-// localStorage.setItem("fourth to last city", cityInputEl.val())
-// var fourthSaved = localStorage.getItem("fourth to last city")
-// lastCityEl.text(fourthSaved)
-// console.log(fourthSaved)
-
-
-
-
-// lastCityEl.text(firstSaved)
-// secondToLastCityEl.text(secondSaved)
-// thirdToLastCityEl.text(thirdSaved)
-// fourthToLastCityEl.text(fourthSaved)
-
-// Clears form of city input
 cityInputEl.text("");
 
