@@ -40,9 +40,10 @@ hr{
 section{
     border: 1px solid grey;
     width: 100%;
-    height: 300px;
+    height: 350px;
     margin: 10px 0;
     padding: 5px;
+    background-color: lightslategray;
 }
 
 p{
@@ -57,6 +58,6 @@ p{
     margin: 5px;
     width: 200px;
     padding: 0;
-    background-color: #355366;
+    background-color: lightslategray;
     color: white;
 }

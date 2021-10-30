@@ -33,49 +33,46 @@ weatherInfoEl.hide();
 // Event handler listening for submitting the form
 cityFormInput.on('submit', handleFormSubmit);
 
-function handleFormSubmit (event) {
-    // Prevents refreshing of page
-    event.preventDefault();
-    console.log('City:', cityInputEl.val());
-
+function handleFormSubmit (cityName) {
+    console.log('City:', cityName);
 
     // Url used to grab API based on city inputted
-    var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityInputEl.val() + '&units=imperial&appid=b9906dda28b3c1ed70ea82d2cbf1483d';
+    var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&units=imperial&appid=b9906dda28b3c1ed70ea82d2cbf1483d';
 
-    fetch(requestUrl)
+    axios.get(requestUrl)
         .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-
             // Shows weather info section once data is generated
             weatherInfoEl.show();
 
             // Creates, appends and adds text for today's forecast
+            var cityInput = $('<h1></h1>');
+            cityInput.text(cityName);
+            forecastTodayEl.append(cityInput);
+            
             var forecastTodayTitle = $('<h1>');
             forecastTodayTitle.text(cityInputEl.val() + ' ' + dateToday);
             forecastTodayEl.append(forecastTodayTitle);
 
             // Creates, appends and adds image for today's forecast
             var currentPicEl = $('<img>');
-            let weatherPic = data.weather[0].icon;
+            let weatherPic = response.data.weather[0].icon;
             currentPicEl.attr("src", "https://openweathermap.org/img/wn/" + weatherPic + "@2x.png");
-            currentPicEl.attr("alt", data.weather[0].description);
+            currentPicEl.attr("alt", response.data.weather[0].description);
             forecastTodayEl.append(currentPicEl);
 
             // Creates, appends and adds text for today's temperature
             var tempToday = $('<p>');
-            tempToday.text("Temp: " + data.main.feels_like + ' degrees');
+            tempToday.text("Temp: " + response.data.main.feels_like + ' degrees');
             forecastTodayEl.append(tempToday);
 
             // Creates, appends and adds text for today's windspeed
             var windToday = $('<p>');
-            windToday.text("Wind: " + data.wind.speed + " MPH");
+            windToday.text("Wind: " + response.data.wind.speed + " MPH");
             forecastTodayEl.append(windToday);
 
             // Creates, appends and adds text for today's humidity
             var humidityToday = $('<p>');
-            humidityToday.text("Humidity: " + data.main.humidity + "%")
+            humidityToday.text("Humidity: " + response.data.main.humidity + "%")
             forecastTodayEl.append(humidityToday);
 
             // var uvIndexToday = $('<p>');
@@ -86,14 +83,14 @@ function handleFormSubmit (event) {
     forecastTodayEl.text('');
 
     // URL used to grab 5 day forecast
-    var requestUrl2 = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityInputEl.val() + '&units=imperial&appid=b9906dda28b3c1ed70ea82d2cbf1483d'
+    var requestUrl2 = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=b9906dda28b3c1ed70ea82d2cbf1483d'
 
     fetch(requestUrl2)
         .then(function (response) {
             return response.json();
         })
-        .then(function (data) {
-
+        .then(function(data){
+        console.log(data)
             // Appending appropriate date, time, wind and humidity for next 5 days
             $('#date1').text(momentEl1);
             $('#img1').attr("src", "https://openweathermap.org/img/wn/" + data.list[2].weather[0].icon + "@2x.png");
@@ -145,11 +142,13 @@ function renderSearchHistory() {
     historyEl.innerHTML = "";
     for (let i = 0; i < searchHistory.length; i++) {
         const historyItem = $("<button></button>");
+        historyItem.attr("value",searchHistory[i])
         historyItem.append(searchHistory[i]);
         historyItem.on("click", function () {
-            handleFormSubmit(historyItem);
+            handleFormSubmit(historyItem[0].innerHTML);
         })
         historyEl.append(historyItem);
+        console.log(historyItem)
     }
 }
 
@@ -166,5 +165,4 @@ if (searchHistory.length > 0) {
     handleFormSubmit(searchHistory[searchHistory.length - 1]);
 }
 
-cityInputEl.text("");
 
